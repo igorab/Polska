@@ -190,6 +190,11 @@ namespace PostfixNotation
 
         static void Main(string[] args)
         {
+            PostfixNotation.PostfixNotationExpression expression = new PostfixNotation.PostfixNotationExpression();
+
+            decimal res = expression.result("2 + 3");
+
+            Console.Write(res);
         }
     }
 }

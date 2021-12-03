@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PostfixNotation
@@ -82,7 +81,7 @@ namespace PostfixNotation
                 {
                     if (stack.Count > 0 && !c.Equals("("))
                     {
-                        if (c.Equals(") "))
+                        if (c.Equals(")"))
                         {
                             string s = stack.Pop();
                             while (s != "(")
@@ -107,6 +106,13 @@ namespace PostfixNotation
                     outputSeparated.Add(c);
             }
 
+            if (stack.Count > 0)
+            {
+                foreach (string c in stack)
+                {
+                    outputSeparated.Add(c);
+                }
+            }
 
             return outputSeparated.ToArray();
         }
@@ -192,9 +198,10 @@ namespace PostfixNotation
         {
             PostfixNotation.PostfixNotationExpression expression = new PostfixNotation.PostfixNotationExpression();
 
-            decimal res = expression.result("2 + 3");
+            decimal res = expression.result("2-2*(3-1+(3+4-2*6))");
 
-            Console.Write(res);
+            Console.WriteLine(res);
+            Console.Read();
         }
     }
 }
